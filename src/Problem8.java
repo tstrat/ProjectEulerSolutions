@@ -33,9 +33,8 @@ import java.util.ArrayList;
  @author Travis Stratton
  */
 public class Problem8 {
-    
+
     public static void main(String ... args) {
-        ArrayList<Integer> terms = new ArrayList();
         char[] number = ("73167176531330624919225119674426574742355349194934" +
                 "96983520312774506326239578318016984801869478851843" +
                 "85861560789112949495459501737958331952853208805511" +
@@ -56,15 +55,9 @@ public class Problem8 {
                 "84580156166097919133875499200524063689912560717606" +
                 "05886116467109405077541002256983155200055935729725" +
                 "71636269561882670428252483600823257530420752963450").toCharArray();
-
-        for (int i = 0; i < 13; i++){
-            terms.add(number[i] - '0');
-        }
-        long largest = product(terms);
-        for (int i = terms.size(); i < number.length; i++) {
-            terms.remove(0);
-            terms.add(number[i]- '0');
-            long product = product(terms);
+        long largest = -1;
+        for (int i = 0; i < number.length-12; i++) {
+            long product = product(number, i, i+12);
             if (largest < product){
                 largest = product;
             }
@@ -73,11 +66,14 @@ public class Problem8 {
         System.out.println(largest);
     }
 
-    public static long product(ArrayList<Integer> terms) {
-        long sum = terms.get(0);
-        for (int i = 1; i < terms.size(); i++){
-            sum *= terms.get(i);
+    public static long product(char [] number, int start, int end) {
+        long product = 1;
+        
+        for (int i = start; i <= end; i++){
+            product *= number[i] - '0';
+
         }
-        return sum;
+
+        return product;
     }
 }
