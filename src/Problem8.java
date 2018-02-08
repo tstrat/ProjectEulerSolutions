@@ -68,7 +68,7 @@ public class Problem8 {
 
     public static long product(char [] number, int start, int end) {
         long product = 1;
-        
+
         for (int i = start; i <= end; i++){
             product *= number[i] - '0';
 
