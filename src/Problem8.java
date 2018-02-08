@@ -1,6 +1,3 @@
-import java.math.BigInteger;
-import java.util.ArrayList;
-
 /**
  Problem 8: Largest product in a series
  ---
